@@ -214,8 +214,8 @@ def update_graph(country,year1,year2):
     #Tables
     df_top_cold_old = df[str(year1)].sort_values().head(10)
     df_top_hot_old = df[str(year1)].sort_values(ascending = False).head(10)
-    df_top_cold_new = df[str(year1)].sort_values().head(10)
-    df_top_hot_new = df[str(year1)].sort_values(ascending = False).head(10)
+    df_top_cold_new = df[str(year2)].sort_values().head(10)
+    df_top_hot_new = df[str(year2)].sort_values(ascending = False).head(10)
 
 
     fig5 = go.Figure(data=[go.Table(
