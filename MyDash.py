@@ -7,7 +7,7 @@ import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP,dbc.icons.BOOTSTRAP])
 
-df1 = pd.read_csv('df_total_new_countries.csv')
+df1 = pd.read_csv('https://raw.githubusercontent.com/christianalvarezbaez/GlobalWarming/main/df_total_new_countries.csv')
 df = df1.copy()
 df.set_index('Countries',inplace=True)
 
@@ -21,8 +21,8 @@ sub1 = html.P('The result will be how warmer or colder is the second year compar
 
 #STYLES
 
-table_styles = {'marginLeft': '10%','marginRight': '10%'}
-map_styles = {'width' : '90vh', 'marginLeft': 'auto', 'marginRight':'auto'}
+table_styles = {'marginLeft': '10%','marginRight': '10%', 'width' : '80%'}
+map_styles = {'width' : '100%', 'marginLeft': 'auto', 'marginRight':'auto'}
 
 #%% 
 app.layout = html.Div(children = [
@@ -46,7 +46,7 @@ app.layout = html.Div(children = [
             html.Br(),
             dcc.Graph(id='time_series', 
                       figure={},
-                      style = {'width' : '90vh','marginLeft': 'auto', 'marginRight': 'auto'}   #Right now is empty
+                      style = {'width' : '100%','marginLeft': 'auto', 'marginRight': 'auto'}   #Right now is empty
                 ),
     ], style={'background-color': '#000000', 'width' : '50%'}), 
         dbc.Col([
@@ -95,7 +95,7 @@ app.layout = html.Div(children = [
                        style = table_styles)
                 )
             ], style={'background-color': '#000000'}),
-
+    
 
 ])
 
@@ -125,15 +125,15 @@ def update_graph(country,year1,year2):
 
     fig1 = px.line(x=x, y=y, 
               color=country, 
-              title = f'Mean temperature on {country[0]} over last millenium', template = 'plotly_dark'
-              ).update_layout(
+              title = f'Mean temperature on {country[0]} <br> over last millenium', template = 'plotly_dark'
+              ).update_layout(title_x = 0.50,
         legend_title_text='Country',
     xaxis_title="Year", yaxis_title="Temperature °C", font=dict(
         family="Sans-serif, monospace",
         size=16,
         color="White"), 
     paper_bgcolor='rgba(0,0,0,0)',
-    plot_bgcolor='rgba(0,0,0,0)').update_xaxes(tickangle=60,nticks =20)
+    plot_bgcolor='rgba(0,0,0,0)').update_xaxes(tickangle=60,nticks =20, tickfont_size = 12)
     
 
 
@@ -154,7 +154,7 @@ def update_graph(country,year1,year2):
         template='plotly_dark',
         range_color = [-2, 2], 
     ).update_layout(
-    title_x = 0.45,
+    title_x = 0.50,
     font=dict(
         family="Arial",
         size=16,  # Set the font size here
@@ -172,13 +172,13 @@ def update_graph(country,year1,year2):
         locationmode='country names',
         locations='Countries',
         scope="world",
-        title = f'Mean Temperature by Nation at year {year1}',
+        title = f'Mean Temperature by Nation <br> at year {year1}',
         color=str(year1),
         color_continuous_scale=px.colors.sequential.RdBu_r,
         labels={str(year1): '°C'},
         template='plotly_dark',
         range_color = [-30, 30]
-    ).update_layout(
+    ).update_layout(title_x = 0.50,
     font=dict(
         family="Arial",
         size=16,  # Set the font size here
@@ -194,13 +194,13 @@ def update_graph(country,year1,year2):
         locationmode='country names',
         locations='Countries',
         scope="world",
-        title = f'Mean Temperature by Nation at year {year2}',
+        title = f'Mean Temperature by Nation <br> at year {year2}',
         color=str(year2),
         color_continuous_scale=px.colors.sequential.RdBu_r,
         labels={str(year2): '°C'},
         template='plotly_dark',
         range_color = [-30, 30]
-    ).update_layout(
+    ).update_layout(title_x = 0.5,
     font=dict(
         family="Arial",
         size=16,  # Set the font size here
@@ -228,7 +228,7 @@ def update_graph(country,year1,year2):
                line_color='darkslategray',
                fill_color='lightcyan',
                align='left'))
-    ],layout = {'title' : f'Top Ten Coldest Countries in {year1}','title_x': 0.5, 'title_y':0.9,'width':600, 'height':400}).update_layout(paper_bgcolor='rgba(0,0,0,0)',
+    ],layout = {'title' : f'Top Ten Coldest <br> Countries in {year1}','title_x': 0.5, 'title_y':0.9}).update_layout(paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',margin=dict(l=20, r=20, b=20, t=100),title_font_size = 25,title_font_color = 'white')
 
     fig6 = go.Figure(data=[go.Table(
@@ -241,7 +241,7 @@ def update_graph(country,year1,year2):
                line_color='darkslategray',
                fill_color='lightyellow',
                align='left'))
-    ],layout = {'title' : f'Top Ten Warmest Countries in {year1}','title_x': 0.5, 'title_y':0.9,'width':600, 'height':400}).update_layout(paper_bgcolor='rgba(0,0,0,0)',
+    ],layout = {'title' : f'Top Ten Warmest <br> Countries in {year1}','title_x': 0.5, 'title_y':0.9}).update_layout(paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',margin=dict(l=20, r=20, b=20, t=100),title_font_size = 25,title_font_color = 'white')
 
 
@@ -255,7 +255,7 @@ def update_graph(country,year1,year2):
                line_color='darkslategray',
                fill_color='lightcyan',
                align='left'))
-    ], layout = {'title' : f'Top Ten Coldest Countries in {year2}', 'title_x': 0.5, 'title_y':0.9,'width':600, 'height':400}).update_layout(paper_bgcolor='rgba(0,0,0,0)',
+    ], layout = {'title' : f'Top Ten Coldest <br> Countries in {year2}', 'title_x': 0.5, 'title_y':0.9}).update_layout(paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',margin=dict(l=20, r=20, b=20, t=100),title_font_size = 25,title_font_color = 'white')
 
     fig8 = go.Figure(data=[go.Table(
@@ -268,7 +268,7 @@ def update_graph(country,year1,year2):
                line_color='darkslategray',
                fill_color='lightyellow',
                align='left'))
-    ], layout = {'title' : f'Top Ten Warmest Countries in {year2}', 'title_x': 0.5, 'title_y':0.9, 'width':600, 'height':400}).update_layout(paper_bgcolor='rgba(0,0,0,0)',
+    ], layout = {'title' : f'Top Ten Warmest <br> Countries in {year2}', 'title_x': 0.5, 'title_y':0.9}).update_layout(paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',margin=dict(l=20, r=20, b=20, t=100),title_font_size = 25,title_font_color = 'white')
 
 
@@ -284,6 +284,10 @@ if __name__ == '__main__':
 
 
 # %%
+
+#html.A(
+#        html.Img(src='https://es.m.wikipedia.org/wiki/Archivo:LinkedIn_logo_initials.png', height='32', width='32'),
+#        href='https://www.linkedin.com/in/christian-adri%C3%A1n-%C3%A1lvarez-b%C3%A1ez-264a8aa4/')
 #Experiment with this 
 #https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_background8
 #https://dev.to/omeal/how-to-build-a-curved-ui-header-51dm
@@ -292,3 +296,15 @@ if __name__ == '__main__':
 #https://www.w3schools.com/cssref/tryit.php?filename=trycss3_background-size
 
 # %%
+    
+    dbc.Container(
+            [
+             dbc.Row([
+        dbc.Col(
+            html.P('Author: Christian Álvarez', style = {'color': '#60d7f7'}),
+                    ),   
+            html.A(
+                html.Img(src='https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png', height='32', width='32'),
+                href='https://www.linkedin.com/in/christian-adri%C3%A1n-%C3%A1lvarez-b%C3%A1ez-264a8aa4/')    
+            ], style={'background-color': '#000000', 'display':'inline-block'})
+            ]),
