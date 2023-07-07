@@ -278,7 +278,7 @@ def update_graph(country,year1,year2):
 #%%
 # ------------------------------------------------------------------------------
 if __name__ == '__main__':
-    app.run(debug=False,port=1360)
+    app.run_server(debug=False,host="0.0.0.0",port=8080)
 
 
 
@@ -297,14 +297,14 @@ if __name__ == '__main__':
 
 # %%
     
-    dbc.Container(
-            [
-             dbc.Row([
-        dbc.Col(
-            html.P('Author: Christian Álvarez', style = {'color': '#60d7f7'}),
-                    ),   
-            html.A(
-                html.Img(src='https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png', height='32', width='32'),
-                href='https://www.linkedin.com/in/christian-adri%C3%A1n-%C3%A1lvarez-b%C3%A1ez-264a8aa4/')    
-            ], style={'background-color': '#000000', 'display':'inline-block'})
-            ]),
+#    dbc.Container(
+#            [
+#             dbc.Row([
+#        dbc.Col(
+#            html.P('Author: Christian Álvarez', style = {'color': '#60d7f7'}),
+#                    ),   
+#            html.A(
+#                html.Img(src='https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png', height='32', width='32'),
+#                href='https://www.linkedin.com/in/christian-adri%C3%A1n-%C3%A1lvarez-b%C3%A1ez-264a8aa4/')    
+#            ], style={'background-color': '#000000', 'display':'inline-block'})
+#            ]),
