@@ -7,7 +7,11 @@ This web app was made using data from the [Last Millenium Ensemble Project](http
 * Since original data was in netcdf format, preprocessing was necessary to extract mean temperature in each country across more than 1000 years. This was performed using python libraries such as netCDF4, regionmask, xarray, geopandas and pandas. The result was a dataframe with the mean temperature for each country in each year.
 * The Web App was built using dash, dash_bootstrap, along with plotly for responsive visualizations. The Web App allows user to visualize the changes in mean temperature for more than 100 countries across 1000 years, and also compare a previous year scenario to a new year scenario, observing temperature differences for each country, along with other interesting data for each chosen year.
 
-For any question: christian.alvarez813@gmail.com
+For any question:
+* christian.alvarez813@gmail.com
+* [Linkedin](https://www.linkedin.com/in/christian-adri%C3%A1n-%C3%A1lvarez-b%C3%A1ez-264a8aa4/)
+* [Personal Website](https://christianalvarezbaez.github.io/)
+* [ResearchGate](https://www.researchgate.net/profile/Christian-Alvarez-Baez)
 
 
 -----------------------------------------
