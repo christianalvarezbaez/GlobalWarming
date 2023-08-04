@@ -5,7 +5,9 @@ import plotly.graph_objects as go
 from dash import Dash, dcc, html, Input, Output  # pip install dash (version 2.0.0 or higher)
 import dash_bootstrap_components as dbc
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP,dbc.icons.BOOTSTRAP])
+app = Dash(__name__, meta_tags=[{'name': 'viewport',
+                   'content': 'width=device-width, initial-scale=0.8, maximum-scale=1.2, minimum-scale=0.5,'}]
+       ,external_stylesheets=[dbc.themes.BOOTSTRAP,dbc.icons.FONT_AWESOME])
 
 df1 = pd.read_csv('https://raw.githubusercontent.com/christianalvarezbaez/GlobalWarming/main/df_total_new_countries.csv')
 df = df1.copy()
@@ -94,8 +96,15 @@ app.layout = html.Div(children = [
                        figure = {},
                        style = table_styles)
                 )
-            ], style={'background-color': '#000000'}),
-    
+            ], style={'background-color': '#000000'}),    
+        html.Footer([
+        'Created by ',
+        html.A('Christian Álvarez', href='https://christianalvarezbaez.github.io/ ', target="_blank"),' ',
+        dcc.Link(html.I(className="fa-brands fa-linkedin fa-lg"), href='https://www.linkedin.com/in/christian-adri%C3%A1n-%C3%A1lvarez-b%C3%A1ez-264a8aa4/', target="_blank"),' ',
+        dcc.Link(html.I(className="fa-brands fa-researchgate fa-lg"), href='https://www.researchgate.net/profile/Christian-Alvarez-Baez', target="_blank"),' ',
+        dcc.Link(html.I(className="fa-solid fa-envelope fa-lg"), href='mailto:christian.alvarez813@gmail.com', target="_blank"),' ',
+        dcc.Link(html.I(className="fa-brands fa-github fa-lg"), href='https://github.com/christianalvarezbaez/GlobalWarming/blob/main/README.md', target="_blank")        
+    ]) 
 
 ])
 
@@ -279,32 +288,4 @@ def update_graph(country,year1,year2):
 # ------------------------------------------------------------------------------
 if __name__ == '__main__':
     app.run_server(debug=False,host="0.0.0.0",port=8080)
-
-
-
-
 # %%
-
-#html.A(
-#        html.Img(src='https://es.m.wikipedia.org/wiki/Archivo:LinkedIn_logo_initials.png', height='32', width='32'),
-#        href='https://www.linkedin.com/in/christian-adri%C3%A1n-%C3%A1lvarez-b%C3%A1ez-264a8aa4/')
-#Experiment with this 
-#https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_background8
-#https://dev.to/omeal/how-to-build-a-curved-ui-header-51dm
-
-#playground for images
-#https://www.w3schools.com/cssref/tryit.php?filename=trycss3_background-size
-
-# %%
-    
-#    dbc.Container(
-#            [
-#             dbc.Row([
-#        dbc.Col(
-#            html.P('Author: Christian Álvarez', style = {'color': '#60d7f7'}),
-#                    ),   
-#            html.A(
-#                html.Img(src='https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png', height='32', width='32'),
-#                href='https://www.linkedin.com/in/christian-adri%C3%A1n-%C3%A1lvarez-b%C3%A1ez-264a8aa4/')    
-#            ], style={'background-color': '#000000', 'display':'inline-block'})
-#            ]),
